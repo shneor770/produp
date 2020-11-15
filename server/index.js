@@ -2,11 +2,14 @@ import express from "express";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import cors from "cors";
+import path = from" path";
 
 import postRoutes from "./routes/posts.js";
 
 
 const app = express();
+const publicPath = path.join(__dirname, '..', 'public');
+app.use(express.static(publicPath));
 
 app.use(bodyParser.json({limit: '30mb', extended: true}))
 app.use(bodyParser.urlencoded({limit: '30mb', extended: true}))
